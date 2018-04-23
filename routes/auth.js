@@ -20,7 +20,6 @@ authRoutes.post("/login", passport.authenticate("local", {
 }));
 
 authRoutes.get("/signup", (req, res, next) => {
-  console.log("FUCKEEER");
   res.render("auth/signup");
 });
 

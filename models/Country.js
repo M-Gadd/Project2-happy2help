@@ -14,7 +14,8 @@ const countrySchema = new Schema({
     type: Array //???  >>>>>>>>>>
   },
   pictureUrl: {type: String}, 
-  currency: {type: String}
+  currency: {type: String},
+  videos: {type: Array}
 }, {
   timestamps: {
     createdAt: 'created_at',

@@ -7,6 +7,9 @@
   <body>
     <header>
       <nav>
+        {{#if activeUser.isAdmin}}
+        <a href="/admin">Admin</a>
+        {{/if}}
         <a href="/">Home</a>
         <a href="/get-started">Get Started</a>
         <a href="/culture">Culture Awarness</a>
