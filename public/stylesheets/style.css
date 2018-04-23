@@ -1,8 +1,43 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  padding: 30px;
+  font-family: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background: url("../images/background-pic.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 
 a {
   color: #00B7FF; }
+
+.cloud {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 5% 15%;
+  margin: 1% 15%;
+  border-radius: 15px; }
+
+nav {
+  background-color: rgba(255, 255, 255, 0.8);
+  font-family: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  margin: 0% 15%;
+  border-radius: 15px;
+  padding: 0% 3%; }
+
+nav a {
+  font-size: 3.5vh;
+  color: black;
+  font-weight: 600; }
+
+.btns-login {
+  position: fixed;
+  top: 30px;
+  left: 1155px; }
+
+.btns-login button {
+  margin: 2px; }
+
+.btns-login a {
+  color: white;
+  font-weight: 500; }
 
 /*# sourceMappingURL=style.css.map */
