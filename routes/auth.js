@@ -30,8 +30,8 @@ authRoutes.post("/signup", (req, res, next) => {
   const nationality = req.body.nationality;
   const status = req.body.status;
   const role = req.body.role;
-
   const prefered_Language = req.body.prefered_Language;
+
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
@@ -68,6 +68,37 @@ authRoutes.post("/signup", (req, res, next) => {
 authRoutes.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/");
+});
+
+authRoutes.get('/edit', (req, res, next)=>{
+  if(!req.user){
+    res.redirect('/auth/login');
+  }
+  res.render('auth/edit');
+});
+
+authRoutes.post('/edit', (req, res, next)=>{
+  if(!req.user){
+    res.redirect('/auth/login');
+  }
+ const { username, email, nationality, prefered_Language } = req.body;
+  User.findByIdAndUpdate(
+    req.user._id,
+    { username, email, nationality, prefered_Language },
+    { runValidators: true})
+  .then(()=>{
+    res.redirect("/auth/account-details");
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
+
+authRoutes.get("/account-details", (req, res, next)=>{
+  if(!req.user){
+    res.redirect('/auth/login');
+  }
+  res.render('auth/account-details');
 });
 
 module.exports = authRoutes;

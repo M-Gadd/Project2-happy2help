@@ -15,6 +15,12 @@
         <a href="/culture">Culture Awarness</a>
         <a href="/how-to-get-around">How to get around</a>
         <a href="/auth/signup">Sign Up</a>
+        {{#if theUser}}
+        <a href="/auth/account-details">See your profile</a>
+        <a href="/auth/logout">Log out</a>
+        {{else}}
+        <a href="/auth/login">Log in</a>
+        {{/if}}
 
       </nav>
     </header>
