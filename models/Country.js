@@ -4,14 +4,14 @@ const Schema   = mongoose.Schema;
 const countrySchema = new Schema({
   name: String,
   description: {type: String},
-  Language: {
+  language: {
     type: String,
   },
   weather: {
     type: String,
   },
   cost_of_living: {
-    type: Array //???
+    type: Array //???  >>>>>>>>>>
   },
   pictureUrl: {type: String}, 
   currency: {type: String}

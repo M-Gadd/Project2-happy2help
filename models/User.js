@@ -21,11 +21,12 @@ const userSchema = new Schema({
     enum:["FR","PL","HU","NE","DE","SW","DK","NR","AR","EN","IT","SP","GR"],
     default: ["EN"]
   },
-  prefered_country: {
-    type: Schema.Types.ObjectId,
-    ref: "Country",
-    required: true
-  },
+  // prefered_country: {
+  //   type: Schema.Types.ObjectId,
+  //   ref: "Country",
+  //   // required: true
+  // },
+  // pictureUrl: { type: String, default: ""} //>>>>>>>>>>>
 }, {
   timestamps: {
     createdAt: 'created_at',

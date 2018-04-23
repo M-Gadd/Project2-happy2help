@@ -20,13 +20,19 @@ authRoutes.post("/login", passport.authenticate("local", {
 }));
 
 authRoutes.get("/signup", (req, res, next) => {
+  console.log("FUCKEEER");
   res.render("auth/signup");
 });
 
 authRoutes.post("/signup", (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
-  const rol = req.body.role;
+  const email = req.body.email;
+  const nationality = req.body.nationality;
+  const status = req.body.status;
+  const role = req.body.role;
+
+  const prefered_Language = req.body.prefered_Language;
   if (username === "" || password === "") {
     res.render("auth/signup", { message: "Indicate username and password" });
     return;
@@ -41,19 +47,22 @@ authRoutes.post("/signup", (req, res, next) => {
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
-    const newUser = new User({
+    User.create({
       username,
       password: hashPass,
-      role:"teacher"
-    });
-
-    newUser.save((err) => {
-      if (err) {
-        res.render("auth/signup", { message: "Something went wrong" });
-      } else {
-        res.redirect("/");
-      }
-    });
+      email,
+      nationality,
+      status,
+      role,
+      prefered_Language
+    })
+    .then((userDet)=>{
+      console.log("created" + userDet.username);
+      res.redirect("/");
+    })
+    .catch(()=>{
+      console.log("error creating the user")
+    })
   });
 });
 
