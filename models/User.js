@@ -24,7 +24,7 @@ const userSchema = new Schema({
   prefered_country: {
     type: Schema.Types.ObjectId,
     ref: "Country",
-    required: true
+    // required: true
   },
   // pictureUrl: { type: String, default: ""} //>>>>>>>>>>>
 }, {

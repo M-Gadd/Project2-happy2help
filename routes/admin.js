@@ -29,18 +29,25 @@ router.get("/", (req,res,next)=>{
     next();
     return;
   } 
+  else {res.render("admin/admin");}
 })
 
-  router.get("/admin/", (req,res,next) => {
-    res.render("admin/video");
-  });
+  // router.get("/", (req,res,next) => {
+  // });
 
-  router.get("/admin/", (req,res,next) => {
-    res.render("admin/video");
+  router.get("/user-list", (req,res,next) => {
+    User.find()
+    .then((usersFromDb)=>{
+      res.locals.userList = usersFromDb;
+      res.render("admin/user-list");
+    })
+    .catch((err)=>{
+      next(err);
+    });
   });
   
 router.get("/add-country", (req,res,next) => {
-  res.render("country-form")
+  res.render("admin/country-form")
 })
 
 router.post("process-country", upload.single('blahUpload'), (req,res,next) => {
@@ -65,13 +72,6 @@ router.post("process-country", upload.single('blahUpload'), (req,res,next) => {
 
 })
 
-  User.find()
-    .then((usersFromDb)=>{
-      res.locals.userList = usersFromDb;
-      res.render("admin/user-list");
-    })
-    .catch((err)=>{
-      next(err);
-    });
+
 
 module.exports = router;
