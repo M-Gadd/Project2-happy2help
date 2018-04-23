@@ -12,7 +12,7 @@
         
         <li>Role: {{this.role}} </li>    
       </ul>
-      {{#if ../activeUser.isAdmin }}
+      {{#if ../theUser.isAdmin }}
       <a href="/admin/users/{{this._id}}/delete">Remove Employee</a>
       {{/if}}
     </li>
