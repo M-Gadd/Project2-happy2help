@@ -12,13 +12,18 @@ cloudinary.config({
   api_secret: process.env.cloudinary_secret
 });
 
-const storage = cloudinaryStorage({
-  cloudinary,
-  allowedFormats: ['jpg', 'png', 'jpeg', 'mp4'],
-  folder: "countries"
-});
+const storage =
+  cloudinaryStorage({
+    cloudinary,
+    folder: 'more-movies',
+    params: {
+      resource_type: "video"
+    }
+  });
 
-const upload = multer({ storage });
+const upload = multer({ storage })
+const upload2 = multer({ storage })
+
 
 const router = express.Router();
 
@@ -49,7 +54,7 @@ router.get("/add-country", (req,res,next) => {
   res.render("admin/country-form")
 })
 
-router.post("/process-country", upload.any(), (req,res,next) => {
+router.post("/process-country", upload.fields([{name: "imageFile"},{mediaFile:"videoFile"}]), (req,res,next) => {
   const {name, description, language, currency} = req.body;
   res.send(req.files)
   return;

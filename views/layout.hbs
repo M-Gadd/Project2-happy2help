@@ -14,14 +14,6 @@
     
     <nav>
       <ul class="nav justify-content-center">
-<<<<<<< HEAD
-=======
-        {{#if theUser.isAdmin}}
-        <li>
-          <a href="/admin" class="nav-item">Admin</a>
-        </li>
-        {{/if}}
->>>>>>> 8f793ede86d397a9ab314bfc25062b3936265895
         <li class="nav-item">
           <a href="/" class="nav-link">Home</a>
         </li>
@@ -36,27 +28,11 @@
         </li>
       </ul>
     </nav>
-    <div class="clearfix btns-login">
-<<<<<<< HEAD
-        {{#if theUser}}
-          <button class="btn float-right btn-info"><a href="/auth/account-details">See your profile</a></button>
-          <button class="btn float-right btn-info"><a href="/auth/logout">Log out</a></button>
-          {{#if theUser.isAdmin}}
-          <button class="btn float-right btn-info"><a href="/admin">Admin</a></button>
-          {{/if}}
-          {{else}}
-          <button class="btn float-right btn-info"><a href="/auth/signup">Sign Up</a></button>
-          <button class="btn float-right btn-info"><a href="/auth/login">Log in</a></button>{{/if}}
-    </div>
-
-  </header>
-<div class="cloud">
-  {{{body}}}
-</div>
-  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key={{mapKey}}"></script>
-  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-=======
+    
       {{#if theUser}}
+      {{#if theUser.isAdmin}}
+        <button class="btn float-right btn-info"><a href="/admin">Admin</a></button>
+          {{/if}}
       <div class="float-right">
         <button class="btn btn-info">
           <a href="/auth/change-country">Change country</a>
@@ -91,7 +67,9 @@
   <div class="cloud">
     {{{body}}}
   </div>
->>>>>>> 8f793ede86d397a9ab314bfc25062b3936265895
+
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key={{mapKey}}"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src='/javascripts/script.js'></script>
 </body>
 

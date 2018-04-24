@@ -56,7 +56,7 @@ router.post('/process-resto', (req, res, next) => {
     });
 });
 
-router.get("/culture/food/data", (req, res, next) => {
+router.get("/culture/food", (req, res, next) => {
   Food.find()
     .then((restosFromDb) => {
       res.json(restosFromDb);
