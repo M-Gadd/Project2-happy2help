@@ -2,6 +2,7 @@ const express = require("express");
 const passport = require("passport");
 const authRoutes = express.Router();
 const User = require("../models/User");
+const Country = require("../models/Country");
 
 // Bcrypt to encrypt passwords
 const bcrypt = require("bcrypt");
@@ -154,5 +155,23 @@ authRoutes.post("/edit-password", (req, res, next) => {
       next(err);
     });
 });
+
+authRoutes.get('/change-country', (req, res, next)=>{
+  res.render('auth/countries');
+}); 
+
+authRoutes.post("/countries", (req, res, next) => {
+  
+  const { prefered_country } = req.body;
+  User.findByIdAndUpdate(req.user._id, { prefered_country })
+    .then(userDet => {
+      console.log(userDet.prefered_country);
+      res.redirect("/");
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
 
 module.exports = authRoutes;

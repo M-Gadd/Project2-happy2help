@@ -11,6 +11,7 @@
 
 <body>
   <header>
+    
     <nav>
       <ul class="nav justify-content-center">
         {{#if theUser.isAdmin}}
@@ -33,17 +34,41 @@
       </ul>
     </nav>
     <div class="clearfix btns-login">
-        {{#if theUser}}
-          <button class="btn float-right btn-info"><a href="/auth/account-details">See your profile</a></button>
-          <button class="btn float-right btn-info"><a href="/auth/logout">Log out</a></button>{{else}}
-          <button class="btn float-right btn-info"><a href="/auth/signup">Sign Up</a></button>
-          <button class="btn float-right btn-info"><a href="/auth/login">Log in</a></button>{{/if}}
+      {{#if theUser}}
+      <div class="float-right">
+        <button class="btn btn-info">
+          <a href="/auth/change-country">Change country</a>
+        </button>
+      </div>
+      <div class="float-right">
+        <button class="btn btn-info">
+          <a href="/auth/account-details">See your profile</a>
+        </button>
+      </div>
+      <div class="float-right">
+        <button class="btn btn-info">
+          <a href="/auth/logout">Log out</a>
+        </button>
+      </div>
+      
+      {{else}}
+      <div class="float-right">
+        <button class="btn btn-info">
+          <a href="/auth/signup">Sign Up</a>
+        </button>
+      </div>
+      <div class="float-right">
+        <button class="btn btn-info">
+          <a href="/auth/login">Log in</a>
+        </button>
+        {{/if}}
+      </div>
     </div>
 
   </header>
-<div class="cloud">
-  {{{body}}}
-</div>
+  <div class="cloud">
+    {{{body}}}
+  </div>
   <script src='/javascripts/script.js'></script>
 </body>
 

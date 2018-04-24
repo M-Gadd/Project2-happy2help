@@ -3,6 +3,7 @@ const Schema   = mongoose.Schema;
 
 const countrySchema = new Schema({
   name: String,
+  short: String,
   description: {type: String},
   language: {
     type: String,

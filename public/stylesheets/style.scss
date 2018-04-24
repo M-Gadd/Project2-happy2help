@@ -39,10 +39,17 @@ nav a{
   left: 1155px;
 }
 
+.btn-country{
+  position: fixed;
+  top: 30px;
+  left: 30px;
+}
+
 .btns-login button{
   margin: 2px;
 }
 
+.btn-country a,
 .btns-login a{
   color: white;
   font-weight: 500;

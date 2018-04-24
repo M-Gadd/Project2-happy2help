@@ -58,6 +58,20 @@ router.get("/users/:userId/delete", (req, res, next) => {
     });
 });
 
+router.get("/users/:userId/ban", (req, res, next) => {
+  if (!req.user || req.user.role !== "Admin") {
+    res.redirect("/");
+    return;
+  }
+  User.findByIdAndUpdate(req.params.userId)
+    .then(() => {
+      res.redirect("/admin/user-list");
+    })
+    .catch(err => {
+      next(err);
+    });
+});
+
 router.get("/add-country", (req, res, next) => {
   res.render("admin/country-form");
 });
