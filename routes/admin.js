@@ -16,6 +16,7 @@ cloudinary.config ({
 
 const storage = cloudinaryStorage({
   cloudinary,
+  allowedFormats: ['jpg', 'png', 'jpeg', 'mp4'],
   folder: "countries"
 });
 
@@ -50,20 +51,29 @@ router.get("/add-country", (req,res,next) => {
   res.render("admin/country-form")
 })
 
-router.post("process-country", upload.single('blahUpload'), (req,res,next) => {
+router.post("/process-country", upload.any(), (req,res,next) => {
   const {name, description, language, currency} = req.body;
-  const {originalname, secure_url} = req.file;
+  res.send(req.files)
+  return;
+  const {imageName: originalname, imageUrl: secure_url} = req.files["imageFile"][0];
+  const video = req.files['videoFile'].map(function(vid){
+    const {originalname, secure_url} = vid;
+    return {name: originalname, mediaFile: secure_url}
+    res.send(req.files);
+  })
 
   Country.create({
     name, 
     description,
     language,
     currency,
-    imageName: originalname,
-    imageUrl: secure_url
+    // imageName: originalname,
+    pictureUrl: secure_url,
+    videos: video
   })
    .then(()=> {
-     res.redirect("/");
+     res.redirect("/admin");
+    
    })
    .catch((err)=>{
      next(err);

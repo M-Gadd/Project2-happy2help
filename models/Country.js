@@ -13,8 +13,8 @@ const countrySchema = new Schema({
   cost_of_living: {
     type: Array //???  >>>>>>>>>>
   },
-  pictureUrl: {type: String}, 
   currency: {type: String},
+  pictureUrl: {type: String}, 
   videos: {type: Array}
 }, {
   timestamps: {

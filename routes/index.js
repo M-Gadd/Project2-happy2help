@@ -1,6 +1,8 @@
 const express = require('express');
 const router  = express.Router();
 
+const Food = require("../models/Food");
+
 /* GET home page */
 router.get('/', (req, res, next) => {
   res.render('index');
@@ -33,6 +35,36 @@ router.get("/get-started/adminOffices", (req,res,next) => {
 router.get("/culture/food", (req,res,next) => {
   res.render("sub-pages/foodmap");
 })
+
+router.get('/culture/food/add', (req, res, next) => {
+  res.render('sub-pages/food-form');
+});
+
+router.post('/process-resto', (req, res, next) => {
+  const { name, description, latitude, longitude } = req.body;
+  const location = {
+    type: 'Point',
+    coordinates: [ latitude, longitude ]
+  };
+
+  Food.create({ name, description, location })
+    .then(() => {
+      res.redirect('/culture/food');
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.get("/culture/food/data", (req, res, next) => {
+  Food.find()
+    .then((restosFromDb) => {
+      res.json(restosFromDb);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
 
 router.get("/how-to-get-around/transport", (req,res,next) => {
   res.render("sub-pages/transport");

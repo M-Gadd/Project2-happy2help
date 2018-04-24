@@ -1,0 +1,29 @@
+<h2>Recommend a Resturant or a Place</h2>
+
+<form action="/process-resto" method="POST">
+  <label>
+    Name:
+    <input type="text" name="name" placeholder="Awesome Food..." />
+  </label>
+  <br />
+
+  <label>
+    Description:
+    <textarea name="description" placeholder="what makes this place unique..."></textarea>
+  </label>
+  <br />
+
+  <label>
+    Location:
+    <input type="text" placeholder="address..." class="location-input" />
+  </label>
+  <br />
+
+  <!-- these will be set by out Place Autocomplete -->
+  <input type="hidden" name="latitude" class="lat-input" />
+  <input type="hidden" name="longitude" class="lng-input" />
+
+  <button>Save This Restaurant</button>
+</form>
+
+<div class="my-map" style="display: none;"></div>

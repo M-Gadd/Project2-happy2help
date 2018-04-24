@@ -13,11 +13,6 @@
   <header>
     <nav>
       <ul class="nav justify-content-center">
-        {{#if theUser.isAdmin}}
-        <li class="nav-item">
-          <a href="/admin" class="nav-item">Admin</a>
-        </li>
-        {{/if}}
         <li class="nav-item">
           <a href="/" class="nav-link">Home</a>
         </li>
@@ -35,7 +30,11 @@
     <div class="clearfix btns-login">
         {{#if theUser}}
           <button class="btn float-right btn-info"><a href="/auth/account-details">See your profile</a></button>
-          <button class="btn float-right btn-info"><a href="/auth/logout">Log out</a></button>{{else}}
+          <button class="btn float-right btn-info"><a href="/auth/logout">Log out</a></button>
+          {{#if theUser.isAdmin}}
+          <button class="btn float-right btn-info"><a href="/admin">Admin</a></button>
+          {{/if}}
+          {{else}}
           <button class="btn float-right btn-info"><a href="/auth/signup">Sign Up</a></button>
           <button class="btn float-right btn-info"><a href="/auth/login">Log in</a></button>{{/if}}
     </div>
@@ -44,6 +43,8 @@
 <div class="cloud">
   {{{body}}}
 </div>
+  <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key={{mapKey}}"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <script src='/javascripts/script.js'></script>
 </body>
 
