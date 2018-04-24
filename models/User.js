@@ -18,11 +18,11 @@ const userSchema = new Schema({
   nationality: {type: String},
   prefered_Language: {
     type: String,
-    enum:["FR","PL","HU","NE","DE","SW","DK","NR","AR","EN","IT","SP","GR"],
     default: ["EN"]
   },
   prefered_country: {
-    type: Schema.Types.ObjectId,
+    type: String,
+    // Schema.Types.ObjectId
     ref: "Country",
     // required: true
   },
@@ -36,6 +36,10 @@ const userSchema = new Schema({
 
 userSchema.virtual("isAdmin").get(function(){
   return this.role === "Admin";
+})
+
+userSchema.virtual("isntAdmin").get(function(){
+  return this.role !== "Admin";
 })
 
 const User = mongoose.model('User', userSchema);
