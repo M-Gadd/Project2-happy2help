@@ -3,9 +3,9 @@
 <h2>User List</h2>
 
 
-<ul>
+<ul class="list-group">
   {{#each userList}}
-  <li>
+  <li class="list-group-item">
     {{#if ../theUser.isAdmin }}
     <h3>{{this.username}}</h3>
     <ul>
@@ -13,7 +13,9 @@
       <li>Role: {{this.role}} </li>
     </ul>
     {{#if this.isntAdmin}}
+    <button class="btn btn-danger float-right">
     <a href="/admin/users/{{this._id}}/delete">Remove User</a>
+    </button>
     {{/if}} {{/if}}
   </li>
   {{/each}}
