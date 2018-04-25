@@ -12,22 +12,18 @@ cloudinary.config({
   api_secret: process.env.cloudinary_secret
 });
 
-const storage =
-  cloudinaryStorage({
-    cloudinary,
-    folder: 'more-movies',
-  });
-  const storage2 =
+
+  const storage =
   cloudinaryStorage({
     cloudinary,
     folder: 'more-movies',
     params: {
-      resource_type: "video"
+      resource_type: "raw"
     }
   });
 
 const upload = multer({ storage })
-const upload2 = multer({ storage2 })
+
 
 
 const router = express.Router();
@@ -59,15 +55,14 @@ router.get("/add-country", (req,res,next) => {
   res.render("admin/country-form")
 })
 
-router.post("/process-country", upload.fields([{name: "imageFile"}]), upload2.fields([{mediaFile:"videoFile"}]), (req,res,next) => {
+router.post("/process-country", upload.fields([{name: "imageFile"}, {name:"videoFile"}]), (req,res,next) => {
   const {name, description, language, currency} = req.body;
-  res.send(req.files)
-  return;
-  const {imageName: originalname, imageUrl: secure_url} = req.files["imageFile"][0];
+  // res.send(req.files)
+  // return;
+  const {originalname, secure_url} = req.files["imageFile"][0];
   const video = req.files['videoFile'].map(function(vid){
     const {originalname, secure_url} = vid;
     return {name: originalname, mediaFile: secure_url}
-    res.send(req.files);
   })
 
   Country.create({
@@ -75,8 +70,7 @@ router.post("/process-country", upload.fields([{name: "imageFile"}]), upload2.fi
     description,
     language,
     currency,
-    imageName: originalname,
-    imageUrl: secure_url,
+    pictureUrl: secure_url,
     videos: video
   })
    .then(()=> {
