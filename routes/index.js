@@ -63,6 +63,7 @@ router.post('/process-resto', (req, res, next) => {
 router.get("/culture/food", (req, res, next) => {
   Food.find()
     .then((restosFromDb) => {
+      res.locals.restos = restosFromDb;
       res.json(restosFromDb);
     })
     .catch((err) => {
