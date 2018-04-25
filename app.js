@@ -61,6 +61,7 @@ hbs.registerHelper('ifUndefined', (value, options) => {
 
 // default value for title local
 app.locals.title = 'Happy 2 Help';
+app.locals.mapKey = process.env.mapKey;
 
 
 // Enable authentication using session + passport

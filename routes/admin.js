@@ -16,13 +16,18 @@ const storage =
   cloudinaryStorage({
     cloudinary,
     folder: 'more-movies',
+  });
+  const storage2 =
+  cloudinaryStorage({
+    cloudinary,
+    folder: 'more-movies',
     params: {
       resource_type: "video"
     }
   });
 
 const upload = multer({ storage })
-const upload2 = multer({ storage })
+const upload2 = multer({ storage2 })
 
 
 const router = express.Router();
@@ -54,7 +59,7 @@ router.get("/add-country", (req,res,next) => {
   res.render("admin/country-form")
 })
 
-router.post("/process-country", upload.fields([{name: "imageFile"},{mediaFile:"videoFile"}]), (req,res,next) => {
+router.post("/process-country", upload.fields([{name: "imageFile"}]), upload2.fields([{mediaFile:"videoFile"}]), (req,res,next) => {
   const {name, description, language, currency} = req.body;
   res.send(req.files)
   return;
@@ -70,8 +75,8 @@ router.post("/process-country", upload.fields([{name: "imageFile"},{mediaFile:"v
     description,
     language,
     currency,
-    // imageName: originalname,
-    pictureUrl: secure_url,
+    imageName: originalname,
+    imageUrl: secure_url,
     videos: video
   })
    .then(()=> {
