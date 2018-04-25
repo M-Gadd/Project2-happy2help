@@ -1,9 +1,10 @@
 const express = require('express');
 const router  = express.Router();
 
+
 const Food = require("../models/Food");
 const Medical = require("../models/Medical");
-
+const User = require("../models/User");
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -16,7 +17,13 @@ router.get("/get-started", (req,res,next) => {
 
 
 router.get("/get-started/lanVideos", (req,res,next) => {
-  res.render("sub-pages/videos");
+  // res.render("sub-pages/videos");
+
+  Country.find({name: req.user.prefered_country}, (req,res,next)=>{
+    .then()
+  })
+
+
 })
 
 /////////// BEG of Medical
