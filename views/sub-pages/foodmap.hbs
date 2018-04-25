@@ -1,11 +1,33 @@
-<h1>List of food recomendations:</h1>
-<ul>
-{{#each restos}}
-<li>
-Name: {{this.name}}
-</li>
-{{/each}}
-</ul>
+<div class="container-fluid">
+    <h4>List of food recomendations:</h4>
+    <div class='row'>
+        <div class="col-5">
+            <ul class="list-group">
+                {{#each restos}} {{#if ../theUser.isAdmin}}
+                <li class="list-group-item">
+                    {{this.name}}
+                    <p> {{this.description}}</p>
+                    {{#if this.InActive}}
+                    <button>
+                        <a href="/food/{{this._id}}/accept">Accept</a>
+                    </button>
+                    {{/if}}
+                    <button>
+                        <a href="/food/{{this._id}}/delete">Delete</a>
+                    </button>
+                </li>
+                {{else}} {{#if this.Active}}
+                <li class="list-group-item">
+                    {{this.name}}
+                    <p> {{this.description}}</p>
+                </li>
+                {{/if}} {{/if}} {{/each}}
+            </ul>
+        </div>
+        <div class="foodmap col-7" id="map"></div>
+    </div>
+</div>
+
 
 
 <a href="/culture/food/add">Recommend Food</a>
