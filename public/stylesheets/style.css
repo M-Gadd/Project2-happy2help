@@ -33,6 +33,14 @@ nav a {
   top: 30px;
   left: 1155px; }
 
+.drop-login {
+  position: fixed;
+  top: 30px;
+  left: 1155px; }
+
+.drop-login-one {
+  margin: 2px; }
+
 .btn-country {
   position: fixed;
   top: 30px;

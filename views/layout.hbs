@@ -17,36 +17,74 @@
           <a href="/" class="nav-link">Home</a>
         </li>
         <li class="nav-item">
-          <a href="/get-started" class="nav-link">Get Started</a>
+
+          <div class="dropdown show">
+          <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get Started</a>
+          <div class="dropdown-menu">
+            <a href="/get-started/lanVideos" class="dropdown-item">Video</a> 
+            <a href="/get-started/adminOffices" class="dropdown-item">Administrative Offices</a> 
+            <a href="/get-started/medicalInfo" class="dropdown-item">Medical Info</a>
+          </div>
+          </div>
+
         </li>
         <li class="nav-item">
-          <a href="/culture" class="nav-link">Culture Awarness</a>
+           <div class="dropdown show">
+          <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Culture</a>
+          <div class="dropdown-menu">
+            <a href="/culture/food" class="dropdown-item">Food Map</a>
+          </div>
+          </div>
         </li>
         <li class="nav-item">
-          <a href="/how-to-get-around" class="nav-link">How to get around</a>
+          <div class="dropdown show">
+          <a class="nav-link" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Get around</a>
+          <div class="dropdown-menu">
+            <a href="/how-to-get-around/transport" class="dropdown-item"> City Transportation</a>
+          </div>
+          </div>
         </li>
       </ul>
     </nav>
-    <div class="btn-group float-right">
+    <div class="drop-login">
+    {{#if theUser.isAdmin}}
+    <div class="btn-group float-right drop-login-one">
+      <button type="button" class="btn btn-info">
+        Admin
+      </button>
+      <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
+        aria-expanded="false">
+        <span class="sr-only">Toggle Dropdown</span>
+      </button>
+      <div class="dropdown-menu">
+        <a href="/admin/user-list" class="dropdown-item">User list</a>
+        <a href="/admin/add-country" class="dropdown-item">Add country</a>
+      </div>
+    </div>
+    {{/if}}
+    {{#if theUser}}
+    <div class="btn-group float-right drop-login-one">
       <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Your Account
       </button>
       <div class="dropdown-menu">
-        {{#if theUser}} 
-        {{#if theUser.isAdmin}}
-        <a href="/admin" class="dropdown-item">Admin</a>
-        <div class="dropdown-divider"></div>
-        {{/if}}
         <a href="/auth/change-country" class="dropdown-item">Change country</a>
         <a href="/auth/account-details" class="dropdown-item">See your profile</a>
         <div class="dropdown-divider"></div>
         <a href="/auth/logout" class="dropdown-item">Log out</a>
-        {{else}}
-        <a href="/auth/signup" class="dropdown-item">Sign Up</a>
-        <a href="/auth/login" class="dropdown-item">Log in</a>
-        {{/if}}
       </div>
     </div>
+    </div>
+    {{else}}
+    <div class="float-right btns-login">
+      <button class="btn btn-success">
+        <a href="/auth/login">Log in</a>
+      </button>
+      <button class="btn btn-warning">
+        <a href="/auth/signup">Sign Up</a>
+      </button>
+    </div>
+    {{/if}}
     
   </header>
   <div class="cloud">
@@ -62,3 +100,9 @@
 </body>
 
 </html>
+
+
+
+
+        
+        

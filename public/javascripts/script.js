@@ -1,5 +1,6 @@
 const mapDiv = document.querySelector("#map");
 
+
 const map =
   new google.maps.Map(mapDiv, {
     zoom: 13,
@@ -19,6 +20,25 @@ navigator.geolocation.getCurrentPosition((result) => {
     title: "Your Location",
     animation: google.maps.Animation.DROP
   });
+});
+
+
+axios
+  .get("/resto/data")
+  .then(response => {
+    const restoList = response.data;
+    restoList.forEach(oneResto => {
+      const [lat, lng] = oneResto.location.coordinates;
+      new google.maps.Marker({
+        position: { lat, lng },
+        map: map,
+        title: oneResto.name,
+        animation: google.maps.Animation.DROP
+      });
+    });
+  })
+  .catch(err => {
+    alert("Something went wrong! 💩");
 });
 
 const directionsService = new google.maps.DirectionsService;

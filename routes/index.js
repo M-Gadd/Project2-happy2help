@@ -70,6 +70,7 @@ router.get("/get-started/medicalInfo", (req, res, next) => {
     });
 });
 
+
 /////////// END of Medical
 
 router.get("/get-started/adminOffices", (req,res,next) => {
@@ -137,6 +138,17 @@ router.get('/food/:foodId/delete', (req, res, next)=>{
     next(err);
   })
 })
+
+router.get("/resto/data", (req, res, next) => {
+  Food.find()
+    .then((restosFromDb) => {
+      res.json(restosFromDb);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
 /////////// >>>>>>>>>>>>>>>> END of Culture <<<<<<<<<<<<<<<<<<<<
 
 
