@@ -1,4 +1,4 @@
-const mapDiv = document.querySelector(".my-map");
+const mapDiv = document.querySelector("#map");
 
 const map =
   new google.maps.Map(mapDiv, {

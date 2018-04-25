@@ -20,6 +20,14 @@ const restoSchema = new Schema({
   timestamps: true
 });
 
+restoSchema.virtual("Active").get(function(){
+  return this.status === "Active";
+})
+
+restoSchema.virtual("InActive").get(function(){
+  return this.status === "In-active";
+})
+
 restoSchema.index({ location: "2dsphere" });
 
 const Food = mongoose.model("Restaurant", restoSchema);

@@ -65,11 +65,7 @@ router.get("/get-started/adminOffices", (req,res,next) => {
 
 router.get("/culture", (req,res,next) => {
   res.render("pages/culture-awarness");
-})
-
-router.get("/culture/food", (req,res,next) => {
-  res.render("sub-pages/foodmap");
-})
+});
 
 router.get('/culture/food/add', (req, res, next) => {
   res.render('sub-pages/food-form');
@@ -95,13 +91,37 @@ router.get("/culture/food", (req, res, next) => {
   Food.find()
     .then((restosFromDb) => {
       res.locals.restos = restosFromDb;
-      res.json(restosFromDb);
+      // res.json(restosFromDb);
+      res.render("sub-pages/foodmap");
     })
     .catch((err) => {
       next(err);
     });
 });
 
+router.get('/food/:foodId/accept', (req, res, next)=>{
+  Food.findByIdAndUpdate(
+    req.params.foodId,
+    { $set: { status: 'Active' }},
+    {runValidators: true}
+  )
+  .then(()=>{
+    res.redirect('/culture/food');
+  })
+  .catch((err)=>{
+    next(err);
+  })
+});
+
+router.get('/food/:foodId/delete', (req, res, next)=>{
+  Food.findByIdAndRemove(req.params.foodId)
+  .then(()=>{
+    res.redirect("/culture/food");
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
 /////////// >>>>>>>>>>>>>>>> END of Culture <<<<<<<<<<<<<<<<<<<<
 
 
