@@ -4,7 +4,7 @@
         <div class="col-5">
             <ul class="list-group">
                 {{#each restos}} {{#if ../theUser.isAdmin}}
-                <li class="list-group-item">
+                <li class="list-group-item marker">
                     {{this.name}}
                     <p> {{this.description}}</p>
                     {{#if this.InActive}}
