@@ -10,6 +10,11 @@ const restoSchema = new Schema({
     coordinates: [
       { type: Number }
     ]
+  },
+  status: {
+    type: String,
+    enum: ["Active", "In-active"],
+    default: ["In-active"]
   }
 }, {
   timestamps: true

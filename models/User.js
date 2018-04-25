@@ -12,8 +12,8 @@ const userSchema = new Schema({
   },
   status: {
     type: String,
-    enum: ["Active", "Off"], 
-    default: ["Off"]
+    enum: ["Active", "In-active"], 
+    default: ["In-active"]
   },
   nationality: {type: String},
   prefered_Language: {

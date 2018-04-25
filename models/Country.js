@@ -16,7 +16,12 @@ const countrySchema = new Schema({
   },
   currency: {type: String},
   pictureUrl: {type: String}, 
-  videos: {type: Array}
+  videos: {type: Array},
+  status: {
+    type: String,
+    enum: ["Active", "In-active"],
+    default: ["In-active"]
+  }
 }, {
   timestamps: {
     createdAt: 'created_at',

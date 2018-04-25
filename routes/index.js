@@ -28,6 +28,10 @@ router.get("/get-started/medicalInfo", (req,res,next) => {
   res.render("sub-pages/medical");
 })
 
+router.get("/get-started/medicalInfo/add", (req,res,send)=>{
+  res.render("sub-pages/medical-form");
+})
+
 router.get("/get-started/adminOffices", (req,res,next) => {
   res.render("sub-pages/adminOffices");
 })
