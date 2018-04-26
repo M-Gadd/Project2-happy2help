@@ -7,20 +7,25 @@
 </div>
 
 <div class="form-group">
+    <label for= "type" >Type of Place:</label>
+    <input id="type" type="text" name="type" placeholder="Hopspital, clinic, Private Doctor..." class="form-control"/>
+</div>
+
+<div class="form-group">
     <label for="description">Description:</label>
     <textarea id="description" name="description" cols="30" rows="6" placeholder="How can they help" class="form-control"></textarea>
 </div>
 
 <div class="form-group">
     <label for="address" >Location:</label>
-    <input id="address" type="text" placeholder="address..." class="location-inpu form-control" /> 
+    <input id="address" type="text" placeholder="address..." class="location-input2 form-control" /> 
 </div>
 
   <!-- these will be set by out Place Autocomplete -->
-  <input type="hidden" name="latitude" class="lat-input" />
-  <input type="hidden" name="longitude" class="lng-input" />
+  <input type="hidden" name="latitude" class="lat-input2" />
+  <input type="hidden" name="longitude" class="lng-input2" />
 
-  <button class="btn btn-outline-dark">Save This Restaurant</button>
+  <button class="btn btn-outline-dark">Save This Medical Place</button>
 </form>
 
-<div class="my-map" id="map" style="display: none;"></div>
+<div class="medmap" style="display: none;"></div>

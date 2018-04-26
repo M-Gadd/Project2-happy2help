@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const medicSchema = new Schema({
   name: { type: String },
   description: { type: String },
+  type: { type: String },  
   location: {
     type: { type: String },
     coordinates: [
@@ -19,6 +20,14 @@ const medicSchema = new Schema({
 }, {
   timestamps: true
 });
+
+medicSchema.virtual("Active").get(function(){
+  return this.status === "Active";
+})
+
+medicSchema.virtual("InActive").get(function(){
+  return this.status === "In-active";
+})
 
 medicSchema.index({ location: "2dsphere" });
 

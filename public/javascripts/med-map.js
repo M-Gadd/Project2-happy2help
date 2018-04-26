@@ -45,3 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('IronGenerator JS imported successfully!');
 
 }, false);
+
+const locationInput2 = document.querySelector(".location-input2");
+const latInput2 = document.querySelector(".lat-input2");
+const lngInput2 = document.querySelector(".lng-input2");
+
+const autocomplete2 = new google.maps.places.Autocomplete(locationInput2);
+
+autocomplete2.addListener("place_changed", () => {
+  const place = autocomplete2.getPlace();
+  const loc = place.geometry.location;
+
+  latInput2.value = loc.lat();
+  lngInput2.value = loc.lng();
+});
