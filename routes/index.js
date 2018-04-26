@@ -73,6 +73,18 @@ router.get("/get-started/medicalInfo", (req, res, next) => {
 });
 
 
+router.get("/medical/data", (req, res, next) => {
+  Medical.find()
+    .then((medsFromDb) => {
+      res.json(medsFromDb);
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+
+
 /////////// END of Medical
 
 router.get("/get-started/adminOffices", (req,res,next) => {

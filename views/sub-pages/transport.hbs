@@ -1,1 +1,16 @@
-<div class="my-map" width="10" heigth="10" id="map"></div>
+<form>
+    <div class="form-group">
+        <label for="address">From:</label>
+        <input id="address" type="text" placeholder="" class="location-input form-control" />
+    </div>
+    <div class="form-group">
+        <label for="address">To:</label>
+        <input id="address" type="text" placeholder="" class="location-input form-control" />
+    </div>
+
+    <!-- these will be set by out Place Autocomplete -->
+    <input type="hidden" name="latitude" class="lat-input" />
+    <input type="hidden" name="longitude" class="lng-input" />
+<button class="route">Search</button>
+</form>
+<div class="trans-map" width="10" heigth="10"></div>
