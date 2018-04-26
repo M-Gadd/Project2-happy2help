@@ -37,22 +37,18 @@ router.get("/get-started/lanVideos", (req,res,next) => {
 
 /////////// BEG of Medical
 
-router.get("/get-started/medicalInfo", (req,res,next) => {
-  res.render("sub-pages/medical");
-})
-
 router.get("/get-started/medicalInfo/add", (req,res,send)=>{
   res.render("sub-pages/medical-form");
 })
 
 router.post('/process-medic', (req, res, next) => {
-  const { name, description, latitude, longitude } = req.body;
+  const { name, description, type, latitude, longitude } = req.body;
   const location = {
     type: 'Point',
     coordinates: [ latitude, longitude ]
   };
 
-  Medical.create({ name, description, location })
+  Medical.create({ name, description, type, location })
     .then(() => {
       res.redirect('/get-started/medicalInfo');
     })
@@ -64,8 +60,9 @@ router.post('/process-medic', (req, res, next) => {
 router.get("/get-started/medicalInfo", (req, res, next) => {
   Medical.find()
     .then((medicsFromDb) => {
+      // res.send(medicsFromDb);
       res.locals.medics = medicsFromDb;
-      res.render("get-started/medicalInfo")
+      res.render("sub-pages/medical")
     })
     .catch((err) => {
       next(err);
@@ -89,6 +86,30 @@ router.get("/medical/data", (req, res, next) => {
 
 router.get("/get-started/adminOffices", (req,res,next) => {
   res.render("sub-pages/adminOffices");
+})
+
+router.get('/get-started/medicalInfo/:medicalId/accept', (req, res, next)=>{
+  Medical.findByIdAndUpdate(
+    req.params.medicalId,
+    { $set: { status: 'Active' }},
+    {runValidators: true}
+  )
+  .then(()=>{
+    res.redirect('/get-started/medicalInfo');
+  })
+  .catch((err)=>{
+    next(err);
+  })
+});
+
+router.get('/get-started/medicalInfo/:medicalId/delete', (req, res, next)=>{
+  Medical.findByIdAndRemove(req.params.medicalId)
+  .then(()=>{
+    res.redirect("/get-started/medicalInfo");
+  })
+  .catch((err)=>{
+    next(err);
+  })
 })
 
 /////////// >>>>>>>> BEG of Culture <<<<<<<<<<<<

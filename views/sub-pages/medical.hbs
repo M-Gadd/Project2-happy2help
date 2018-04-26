@@ -12,20 +12,22 @@
             <ul class="list-group">
                 {{#each medics}} {{#if ../theUser.isAdmin}}
                 <li class="list-group-item marker">
-                    {{this.name}}
+                    <p> {{this.name}}</p>
+                    <p> {{this.type}}</p>
                     <p> {{this.description}}</p>
                     {{#if this.InActive}}
                     <button>
-                        <a href="/food/{{this._id}}/accept">Accept</a>
+                        <a href="/get-started/medicalInfo/{{this._id}}/accept">Accept</a>
                     </button>
                     {{/if}}
                     <button>
-                        <a href="/food/{{this._id}}/delete">Delete</a>
+                        <a href="/get-started/medicalInfo/{{this._id}}/delete">Delete</a>
                     </button>
                 </li>
                 {{else}} {{#if this.Active}}
                 <li class="list-group-item">
-                    {{this.name}}
+                    <p> {{this.name}}</p>
+                    <p> {{this.type}}</p>
                     <p> {{this.description}}</p>
                 </li>
                 {{/if}} {{/if}} {{/each}}
