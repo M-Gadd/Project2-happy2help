@@ -4,7 +4,8 @@ const Country = require("../models/Country");
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/project-2-happy2help', {useMongoClient: true})
+  .connect('mongodb://localhost/project-2-happy2help', {useMongoClient: true}) 
+  // 'mongodb://localhost/project-2-happy2help'
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {

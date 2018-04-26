@@ -102,13 +102,13 @@ router.get('/culture/food/add', (req, res, next) => {
 });
 
 router.post('/process-resto', (req, res, next) => {
-  const { name, description, latitude, longitude } = req.body;
+  const { name, description, type, latitude, longitude } = req.body;
   const location = {
     type: 'Point',
     coordinates: [ latitude, longitude ]
   };
 
-  Food.create({ name, description, location })
+  Food.create({ name, description, type, location })
     .then(() => {
       res.redirect('/culture/food');
     })

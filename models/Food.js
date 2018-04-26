@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const restoSchema = new Schema({
   name: { type: String },
   description: { type: String },
+  type: {type: String},
   location: {
     type: { type: String },
     coordinates: [
