@@ -55,6 +55,8 @@ router.get("/add-country", (req,res,next) => {
   res.render("admin/country-form")
 })
 
+
+
 router.post("/process-country", upload.fields([{name: "imageFile"}, {name:"videoFile"}]), (req,res,next) => {
   const {name, description, language, currency} = req.body;
   // res.send(req.files)
@@ -81,6 +83,77 @@ router.post("/process-country", upload.fields([{name: "imageFile"}, {name:"video
      next(err);
    });
   });
+
+  router.get("/country-list", (req,res,next)=>{
+    Country.find()
+    .then(countryFromDb => {
+      res.locals.countryList = countryFromDb;
+      res.render("admin/countries-list");
+    })
+    .catch(err => {
+      next(err);
+    });
+  })
+
+  router.get("/country-list/:countryId/delete", (req, res, next) => {
+    if (!req.user || req.user.role !== "Admin") {
+      res.redirect("/");
+      return;
+    }
+    Country.findByIdAndRemove(req.params.countryId)
+      .then(() => {
+        res.redirect("/admin/country-list");
+      })
+      .catch(err => {
+        next(err);
+      });
+  });
+
+ 
+
+
+  router.get("/country-list/:countryId/change", (req, res, next) => {
+    if (!req.user || req.user.role !== "Admin") {
+      res.redirect("/");
+      return;
+    }
+    Country.findById(req.params.countryId)
+      .then(() => {
+        res.render("admin/single-country");
+      })
+      .catch(err => {
+        next(err);
+      });
+  });
+
+  router.post("/edit/process-country", upload.fields([{name: "imageFile"}, {name:"videoFile"}]), (req, res, next) => {
+    if (!req.user || req.user.role !== "Admin") {
+      res.redirect("/");
+      return;
+    }
+    const {name, description, language, currency} = req.body;
+    const {originalname, secure_url} = req.files["imageFile"][0];
+    const video = req.files['videoFile'].map(function(vid){
+      const {originalname, secure_url} = vid;
+      return {name: originalname, mediaFile: secure_url}
+    })
+      // if (req.files.)
+    Country.findByIdAndUpdate(
+      req.params.countryId,
+      { $set: {name, description, language, currency, pictureUrl: secure_url},
+        $push: { videos: { $each: video } } },
+      { runValidators: true }
+    )
+      .then(() => {
+        res.redirect("/admin/country-list");
+      })
+      .catch(err => {
+        next(err);
+      });
+  });
+
+
+  // >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
 router.get("/users/:userId/delete", (req, res, next) => {
   if (!req.user || req.user.role !== "Admin") {
@@ -114,29 +187,29 @@ router.get("/add-country", (req, res, next) => {
   res.render("admin/country-form");
 });
 
-router.post(
-  "process-country",
-  upload.single("blahUpload"),
-  (req, res, next) => {
-    const { name, description, language, currency } = req.body;
-    const { originalname, secure_url } = req.file;
+// router.post(
+//   "process-country",
+//   upload.single("blahUpload"),
+//   (req, res, next) => {
+//     const { name, description, language, currency } = req.body;
+//     const { originalname, secure_url } = req.file;
 
-    Country.create({
-      name,
-      description,
-      language,
-      currency,
-      imageName: originalname,
-      imageUrl: secure_url
-    })
-      .then(() => {
-        res.redirect("/");
-      })
-      .catch(err => {
-        next(err);
-      });
-    res.send(req.file);
-  }
-);
+//     Country.create({
+//       name,
+//       description,
+//       language,
+//       currency,
+//       imageName: originalname,
+//       imageUrl: secure_url
+//     })
+//       .then(() => {
+//         res.redirect("/");
+//       })
+//       .catch(err => {
+//         next(err);
+//       });
+//     res.send(req.file);
+//   }
+// );
 
 module.exports = router;
