@@ -1,8 +1,8 @@
-const mapDiv = document.querySelector("#map");
+const foodMap = document.querySelector(".foodmap");
 
 
-const map =
-  new google.maps.Map(mapDiv, {
+const food =
+  new google.maps.Map(foodMap, {
     zoom: 13,
     center: {
       lat: 0.0,
@@ -13,14 +13,15 @@ const map =
 navigator.geolocation.getCurrentPosition((result) => {
   const { latitude, longitude } = result.coords;
 
-  map.setCenter({ lat: latitude, lng: longitude });
+  food.setCenter({ lat: latitude, lng: longitude });
   new google.maps.Marker({
     position: { lat: latitude, lng: longitude },
-    map: map,
+    map: food,
     title: "Your Location",
     animation: google.maps.Animation.DROP
   });
 });
+
 
 
 axios
@@ -31,7 +32,7 @@ axios
       const [lat, lng] = oneResto.location.coordinates;
       new google.maps.Marker({
         position: { lat, lng },
-        map: map,
+        map: food,
         title: oneResto.name,
         animation: google.maps.Animation.DROP
       });
@@ -41,8 +42,7 @@ axios
     alert("Something went wrong! 💩");
 });
 
-const directionsService = new google.maps.DirectionsService;
-const directionsDisplay = new google.maps.DirectionsRenderer;
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
