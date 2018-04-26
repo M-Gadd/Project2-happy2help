@@ -9,7 +9,8 @@
             <ul class="list-group">
                 {{#each restos}} {{#if ../theUser.isAdmin}}
                 <li class="list-group-item marker">
-                    {{this.name}}
+                    <p>{{this.name}} </p>
+                    <p>{{this.type}}</p>
                     <p> {{this.description}}</p>
                     {{#if this.InActive}}
                     <button>
@@ -22,7 +23,8 @@
                 </li>
                 {{else}} {{#if this.Active}}
                 <li class="list-group-item">
-                    {{this.name}}
+                    <p>{{this.name}} </p>
+                    <p>{{this.type}}</p>
                     <p> {{this.description}}</p>
                 </li>
                 {{/if}} {{/if}} {{/each}}
