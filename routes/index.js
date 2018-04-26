@@ -23,7 +23,8 @@ router.get("/get-started/lanVideos", (req,res,next) => {
 
   Country.find({name: req.user.prefered_country})
     .then(userCountry => {
-      res.locals.showingVideo = userCountry[0].videos[0];
+      res.locals.showingVideo = userCountry[0].videos;
+      console.log(res.locals.showingVideo)
       res.render("sub-pages/videos")
   })
 
@@ -63,7 +64,8 @@ router.post('/process-medic', (req, res, next) => {
 router.get("/get-started/medicalInfo", (req, res, next) => {
   Medical.find()
     .then((medicsFromDb) => {
-      res.json(medicsFromDb);
+      res.locals.medics = medicsFromDb;
+      res.render("get-started/medicalInfo")
     })
     .catch((err) => {
       next(err);

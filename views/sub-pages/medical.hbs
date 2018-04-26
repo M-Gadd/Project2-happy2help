@@ -1,2 +1,33 @@
 
+
+<div class="container-fluid">
+    <h4>List of medical recomendations:</h4>
+    <div class='row'>
+        <div class="col-5">
+            <ul class="list-group">
+                {{#each medics}} {{#if ../theUser.isAdmin}}
+                <li class="list-group-item marker">
+                    {{this.name}}
+                    <p> {{this.description}}</p>
+                    {{#if this.InActive}}
+                    <button>
+                        <a href="/food/{{this._id}}/accept">Accept</a>
+                    </button>
+                    {{/if}}
+                    <button>
+                        <a href="/food/{{this._id}}/delete">Delete</a>
+                    </button>
+                </li>
+                {{else}} {{#if this.Active}}
+                <li class="list-group-item">
+                    {{this.name}}
+                    <p> {{this.description}}</p>
+                </li>
+                {{/if}} {{/if}} {{/each}}
+            </ul>
+        </div>
+        <div class="foodmap col-7" id="map"></div>
+    </div>
+</div>
+
 <a href="/get-started/medicalInfo/add">Recommend Medical Place</a>
