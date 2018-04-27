@@ -1,16 +1,14 @@
-<h1>Admin Zone</h1>
-
 <h2>User List</h2>
 
-
+<div class="admin-users">
 <ul class="list-group list">
   {{#each userList}}
   <li class="list-group-item">
     {{#if ../theUser.isAdmin }}
-    <h3>{{this.username}}</h3>
-    <ul>
-      <li>Email: {{this.email}} </li>
-      <li>Role: {{this.role}} </li>
+    <h3 class="rec-name"><i>{{this.username}}</i></h3>
+    <ul class="users-li">
+      <li class="rec-type"><strong>Email:</strong> {{this.email}} </li>
+      <li class="rec-type"><strong>Role:</strong> {{this.role}} </li>
     </ul>
     {{#if this.isntAdmin}}
     <button class="btn btn-danger float-right btn-admin">
@@ -28,5 +26,4 @@
   </li>
   {{/each}}
 </ul>
-
-
+</div>

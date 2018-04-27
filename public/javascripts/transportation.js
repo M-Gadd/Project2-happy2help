@@ -24,7 +24,7 @@ navigator.geolocation.getCurrentPosition(result => {
 
 var mode = document.querySelector('#mode');
 /******************************SETTING ORIGIN*************************************/
-const locationInputF = document.querySelector(".location-inputF");
+var locationInputF = document.querySelector(".location-inputF");
 const latInputF = document.querySelector(".lat-inputF");
 const lngInputF = document.querySelector(".lng-inputF");
 
@@ -49,7 +49,7 @@ autocompleteF.addListener("place_changed", () => {
 }
 /******************************SETTING DESTINATION*************************************/
 const locationInputT = document.querySelector(".location-inputT");
-if (locationInputT) {
+
   const latInputT = document.querySelector(".lat-inputT");
   const lngInputT = document.querySelector(".lng-inputT");
 
@@ -71,7 +71,7 @@ if (locationInputT) {
     })
 
   });
-}
+
 
 
 /***************************SETTING THE ROUTE *************************************/
@@ -80,12 +80,12 @@ const directionsDisplay = new google.maps.DirectionsRenderer();
 var route = document.querySelector('.route');
 
 var current = document.querySelector('#current');
-if (current) {
-  current.onclick = ()=>{
-    firstMarker = currentLocation;
-    locationInputF.value = currentLocation.title;
-  }
+
+current.onclick = ()=>{
+  firstMarker = currentLocation;
+  locationInputF.value = currentLocation.title;
 }
+
 
 
 

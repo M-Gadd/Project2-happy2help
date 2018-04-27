@@ -13,11 +13,6 @@ router.get('/', (req, res, next) => {
   res.render('index');
 });
 
-router.get("/get-started", (req,res,next) => {
-  res.render("pages/get-started");
-})
-
-
 router.get("/get-started/lanVideos", (req,res,next) => {
   // res.render("sub-pages/videos");
 
@@ -31,16 +26,9 @@ router.get("/get-started/lanVideos", (req,res,next) => {
     .catch((err)=>{
       next(err);
     })
-
-
 })
 
 /////////// BEG of Medical
-
-router.get("/get-started/medicalInfo/add", (req,res,send)=>{
-  res.render("sub-pages/medical-form");
-})
-
 router.post('/process-medic', (req, res, next) => {
   const { name, description, type, latitude, longitude } = req.body;
   const location = {
@@ -114,10 +102,6 @@ router.get('/get-started/medicalInfo/:medicalId/delete', (req, res, next)=>{
 
 /////////// >>>>>>>> BEG of Culture <<<<<<<<<<<<
 
-router.get("/culture", (req,res,next) => {
-  res.render("pages/culture-awarness");
-});
-
 router.get('/culture/food/add', (req, res, next) => {
   res.render('sub-pages/food-form');
 });
@@ -188,10 +172,6 @@ router.get("/resto/data", (req, res, next) => {
 
 
 /////////// BEG of HOW_TO_GET_AROUND
-
-router.get("/how-to-get-around", (req,res,next) => {
-  res.render("pages/htga");
-})
 
 router.get("/how-to-get-around/transport", (req,res,next) => {
   res.render("sub-pages/transport");

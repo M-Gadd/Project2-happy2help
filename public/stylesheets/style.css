@@ -72,4 +72,32 @@ nav a {
   margin: 2px;
   width: 100%; }
 
+.recommend a {
+  color: #5A6268; }
+
+.recommend a:hover {
+  color: white;
+  text-decoration: none; }
+
+.rec-name,
+.rec-type,
+.rec-des {
+  margin: 2px;
+  font-size: 2vh; }
+
+.rec-type {
+  font-size: 2.5vh; }
+
+.rec-name {
+  font-size: 3vh; }
+
+.users-li {
+  list-style-type: none; }
+
+h2 {
+  text-align: center; }
+
+.admin-users {
+  margin: 0 10%; }
+
 /*# sourceMappingURL=style.css.map */

@@ -3,7 +3,8 @@
 <div class="container-fluid">
     <h4>List of medical recomendations:</h4>
     <br>
-    <a href="/get-started/medicalInfo/add">Recommend Medical Place</a>
+    <button type="button" class="btn btn-outline-secondary recommend">
+    <a href="/get-started/medicalInfo/add">Recommend Medical Place</a></button>
     <br>
     <br>
     
@@ -12,15 +13,15 @@
             <ul class="list-group">
                 {{#each medics}} {{#if ../theUser.isAdmin}}
                 <li class="list-group-item marker lii-{{this._id}}">
-                    <p> {{this.name}}</p>
-                    <p> {{this.type}}</p>
-                    <p> {{this.description}}</p>
+                    <h4 class="rec-name"> {{this.name}}</h4>
+                    <h6 class="rec-type"> {{this.type}}</h6>
+                    <p class="rec-des"> {{this.description}}</p>
                     {{#if this.InActive}}
-                    <button>
+                    <button class="btn btn-success btn-admin btn-sm">
                         <a href="/get-started/medicalInfo/{{this._id}}/accept">Accept</a>
                     </button>
                     {{/if}}
-                    <button>
+                    <button class="btn btn-danger btn-admin btn-sm">
                         <a href="/get-started/medicalInfo/{{this._id}}/delete">Delete</a>
                     </button>
                 </li>
