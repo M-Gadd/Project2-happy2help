@@ -1,46 +1,48 @@
 const foodMap = document.querySelector(".foodmap");
 
 
-const food =
-  new google.maps.Map(foodMap, {
-    zoom: 13,
-    center: {
-      lat: 0.0,
-      lng: 0.0
-    }
-});
-
-navigator.geolocation.getCurrentPosition((result) => {
-  const { latitude, longitude } = result.coords;
-
-  // food.setCenter({ lat: latitude, lng: longitude });
-  new google.maps.Marker({
-    position: { lat: latitude, lng: longitude },
-    map: food,
-    title: "Your Location",
-    animation: google.maps.Animation.DROP
+if (foodMap) {
+  var food =
+    new google.maps.Map(foodMap, {
+      zoom: 13,
+      center: {
+        lat: 0.0,
+        lng: 0.0
+      }
   });
-});
 
-// markers = [];
+  navigator.geolocation.getCurrentPosition((result) => {
+    const { latitude, longitude } = result.coords;
 
-axios
-  .get("/resto/data")
-  .then(response => {
-    const restoList = response.data;
-    restoList.forEach(oneResto => {
-      setMarkers(oneResto, food);
-      // console.log(oneResto)
-      // const [lat, lng] = oneResto.location.coordinates;
-      // marker = new google.maps.Marker({
-      //   position: { lat, lng },
-      //   map: food,
-      //   title: oneResto.name,
-      //   animation: google.maps.Animation.DROP
-      });
-      // markers.push(marker);
-        // oneResto.onclick = toggleBounce();
+    // food.setCenter({ lat: latitude, lng: longitude });
+    new google.maps.Marker({
+      position: { lat: latitude, lng: longitude },
+      map: food,
+      title: "Your Location",
+      animation: google.maps.Animation.DROP
     });
+  });
+
+  // markers = [];
+
+  axios
+    .get("/resto/data")
+    .then(response => {
+      const restoList = response.data;
+      restoList.forEach(oneResto => {
+        setMarkers(oneResto, food);
+        // console.log(oneResto)
+        // const [lat, lng] = oneResto.location.coordinates;
+        // marker = new google.maps.Marker({
+        //   position: { lat, lng },
+        //   map: food,
+        //   title: oneResto.name,
+        //   animation: google.maps.Animation.DROP
+        });
+        // markers.push(marker);
+          // oneResto.onclick = toggleBounce();
+      });
+}
 //   })
 //   .catch(err => {
 //     alert("Something went wrong! 💩");

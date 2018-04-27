@@ -199,5 +199,9 @@ router.get("/how-to-get-around/transport", (req,res,next) => {
 
 /////////// END of HOW_TO_GET_AROUND
 
+router.get('/test', (req, res, next)=>{
+  res.render('sub-pages/test')
+})
+
 
 module.exports = router;
