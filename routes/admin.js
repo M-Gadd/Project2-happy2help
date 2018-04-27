@@ -116,21 +116,25 @@ router.post("/process-country", upload.fields([{name: "imageFile"}, {name:"video
     if (!req.user || req.user.role !== "Admin") {
       res.redirect("/");
       return;
-    }
+    } 
+      
     Country.findById(req.params.countryId)
-      .then(() => {
-        res.render("admin/single-country");
+      .then(dataCountry => {
+        res.render("admin/single-country", {dataCountry});
       })
       .catch(err => {
         next(err);
       });
   });
 
-  router.post("/edit/process-country", upload.fields([{name: "imageFile"}, {name:"videoFile"}]), (req, res, next) => {
+  router.post("/edit/:countryId/process-country", upload.fields([{name: "imageFile"}, {name:"videoFile"}]), (req, res, next) => {
     if (!req.user || req.user.role !== "Admin") {
       res.redirect("/");
       return;
     }
+    // if (!(req.files["imageFile"])) {
+    //   imageFile 
+    // }
     const {name, description, language, currency} = req.body;
     const {originalname, secure_url} = req.files["imageFile"][0];
     const video = req.files['videoFile'].map(function(vid){
