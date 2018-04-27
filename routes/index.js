@@ -29,6 +29,11 @@ router.get("/get-started/lanVideos", (req,res,next) => {
 })
 
 /////////// BEG of Medical
+
+router.get("/get-started/medicalInfo/add", (req,res,next) =>{
+  res.render('sub-pages/medical-form');
+})
+
 router.post('/process-medic', (req, res, next) => {
   const { name, description, type, latitude, longitude } = req.body;
   const location = {
