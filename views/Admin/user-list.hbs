@@ -14,9 +14,14 @@
     </ul>
     {{#if this.isntAdmin}}
     <button class="btn btn-danger float-right">
-    <a href="/admin/users/{{this._id}}/delete">Remove User</a>
+      <a href="/admin/users/{{this._id}}/delete">Remove User</a>
     </button>
-    {{/if}} {{/if}}
+    <button class="btn btn-warning float-right">
+      <a href="/admin/users/{{this._id}}/makeadmin">Make Admin</a>
+    </button>
+   
+    {{/if}} 
+    {{/if}}
   </li>
   {{/each}}
 </ul>
