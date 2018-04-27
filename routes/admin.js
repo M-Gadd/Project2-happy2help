@@ -33,7 +33,7 @@ router.get("/", (req, res, next) => {
     next();
     return;
   } else {
-    res.render("admin/admin");
+    res.render("admin-views/admin");
   }
 });
 
@@ -44,7 +44,7 @@ router.get("/user-list", (req, res, next) => {
   User.find()
     .then(usersFromDb => {
       res.locals.userList = usersFromDb;
-      res.render("admin/user-list");
+      res.render("admin-views/user-list");
     })
     .catch(err => {
       next(err);
@@ -52,7 +52,7 @@ router.get("/user-list", (req, res, next) => {
   });
   
 router.get("/add-country", (req,res,next) => {
-  res.render("admin/country-form")
+  res.render("admin-views/country-form")
 })
 
 
@@ -88,7 +88,7 @@ router.post("/process-country", upload.fields([{name: "imageFile"}, {name:"video
     Country.find()
     .then(countryFromDb => {
       res.locals.countryList = countryFromDb;
-      res.render("admin/countries-list");
+      res.render("admin-views/countries-list");
     })
     .catch(err => {
       next(err);
@@ -120,7 +120,7 @@ router.post("/process-country", upload.fields([{name: "imageFile"}, {name:"video
       
     Country.findById(req.params.countryId)
       .then(dataCountry => {
-        res.render("admin/single-country", {dataCountry});
+        res.render("admin-views/single-country", {dataCountry});
       })
       .catch(err => {
         next(err);
@@ -174,7 +174,7 @@ router.get("/users/:userId/delete", (req, res, next) => {
 });
 
 router.get("/add-country", (req, res, next) => {
-  res.render("admin/country-form");
+  res.render("admin-views/country-form");
 });
 
 router.get('/users/:userId/makeadmin', (req, res, next)=>{
