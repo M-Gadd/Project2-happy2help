@@ -42,5 +42,6 @@ userSchema.virtual("isntAdmin").get(function(){
   return this.role !== "Admin";
 })
 
+
 const User = mongoose.model('User', userSchema);
 module.exports = User;

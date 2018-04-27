@@ -3,7 +3,7 @@
 <h2>User List</h2>
 
 
-<ul class="list-group">
+<ul class="list-group list">
   {{#each userList}}
   <li class="list-group-item">
     {{#if ../theUser.isAdmin }}
@@ -13,15 +13,20 @@
       <li>Role: {{this.role}} </li>
     </ul>
     {{#if this.isntAdmin}}
-    <button class="btn btn-danger float-right">
+    <button class="btn btn-danger float-right btn-admin">
       <a href="/admin/users/{{this._id}}/delete">Remove User</a>
     </button>
-    <button class="btn btn-warning float-right">
-      <a href="/admin/users/{{this._id}}/makeadmin">Make Admin</a>
+    <button class="btn btn-warning float-right btn-admin">
+      <a href="/admin/users/{{this._id}}/makeadmin" >Make Admin</a>
     </button>
-   
+    {{else}}
+    <button class="btn btn-warning float-right btn-admin">
+      <a href="/admin/users/{{this._id}}/unmakeadmin" >Make User</a>
+    </button>
     {{/if}} 
     {{/if}}
   </li>
   {{/each}}
 </ul>
+
+

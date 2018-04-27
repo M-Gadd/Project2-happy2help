@@ -34,15 +34,15 @@ nav a{
 }
 
 .btns-login{
-  position: fixed;
-  top: 30px;
-  left: 1155px;
+  position: relative;
+  bottom: 30px;
+  left: 30px;
 }
 
 .drop-login{
-  position: fixed;
-  top: 30px;
-  left: 1155px;
+  position: relative;
+  left: 30px;
+  bottom: 30px;
 }
 
 .drop-login-one{
@@ -55,10 +55,12 @@ nav a{
   left: 30px;
 }
 
-.btns-login button{
+.btns-login button,
+.btn-admin{
   margin: 2px;
 }
 
+.btn-admin a,
 .btn-country a,
 .btns-login a{
   color: white;

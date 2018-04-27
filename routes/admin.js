@@ -187,6 +187,35 @@ router.get('/users/:userId/makeadmin', (req, res, next)=>{
   })
 });
 
+router.get('/users/:userId/makeadmin', (req, res, next)=>{
+  User.findByIdAndUpdate(
+    req.params.userId,
+    { $set: { role: "Admin" }},
+    {runValidators: true}
+  )
+  .then(()=>{
+    res.redirect("/admin/user-list");
+  })
+  .catch((err)=>{
+    console.log('something went wrong', err);
+  })
+});
+
+router.get('/users/:userId/unmakeadmin', (req, res, next)=>{
+  User.findByIdAndUpdate(
+    req.params.userId,
+    { $set: { role: "User" }},
+    {runValidators: true}
+  )
+  .then(()=>{
+    res.redirect("/admin/user-list");
+  })
+  .catch((err)=>{
+    console.log('something went wrong', err);
+  })
+});
+
+
 
 // router.post(
 //   "process-country",
