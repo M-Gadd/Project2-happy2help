@@ -1,7 +1,7 @@
 const transportation = document.querySelector(".trans-map");
 
-
-const tranMap = new google.maps.Map(transportation, {
+if(transportation) {
+var tranMap = new google.maps.Map(transportation, {
   zoom: 13,
   center: {
     lat: 0.0,
@@ -46,29 +46,32 @@ autocompleteF.addListener("place_changed", () => {
   })
 
 });
+}
 /******************************SETTING DESTINATION*************************************/
 const locationInputT = document.querySelector(".location-inputT");
-const latInputT = document.querySelector(".lat-inputT");
-const lngInputT = document.querySelector(".lng-inputT");
+if (locationInputT) {
+  const latInputT = document.querySelector(".lat-inputT");
+  const lngInputT = document.querySelector(".lng-inputT");
 
-const autocompleteT = new google.maps.places.Autocomplete(locationInputT);
+  const autocompleteT = new google.maps.places.Autocomplete(locationInputT);
 
-var secondMarker = {}
-autocompleteT.addListener("place_changed", () => {
-  const place = autocompleteT.getPlace();
-  const loc = place.geometry.location;
- 
-  latInputT.value = loc.lat();
-  lngInputT.value = loc.lng();
+  var secondMarker = {}
+  autocompleteT.addListener("place_changed", () => {
+    const place = autocompleteT.getPlace();
+    const loc = place.geometry.location;
+  
+    latInputT.value = loc.lat();
+    lngInputT.value = loc.lng();
 
-  secondMarker = new google.maps.Marker({
-    position: { lat: loc.lat(), lng: loc.lng()},
-    map: tranMap,
-    title: "Destination",
-    animation: google.maps.Animation.directionsDisplay
-  })
+    secondMarker = new google.maps.Marker({
+      position: { lat: loc.lat(), lng: loc.lng()},
+      map: tranMap,
+      title: "Destination",
+      animation: google.maps.Animation.directionsDisplay
+    })
 
-});
+  });
+}
 
 
 /***************************SETTING THE ROUTE *************************************/
@@ -77,29 +80,32 @@ const directionsDisplay = new google.maps.DirectionsRenderer();
 var route = document.querySelector('.route');
 
 var current = document.querySelector('#current');
-current.onclick = ()=>{
-firstMarker = currentLocation;
-locationInputF.value = currentLocation.title;
+if (current) {
+  current.onclick = ()=>{
+    firstMarker = currentLocation;
+    locationInputF.value = currentLocation.title;
+  }
 }
 
 
-route.onclick = ()=>{
-  const directionRequest = {
-    origin: {lat: firstMarker.position.lat(), lng: firstMarker.position.lng()},
-    destination: {lat: secondMarker.position.lat(), lng: secondMarker.position.lng()},
-    travelMode: mode.value
-  };
-  
-  directionsService.route(
-    directionRequest,
-    function(response, status) {
-      if (status === 'OK') {
-        directionsDisplay.setDirections(response);
-  
-      } else {
-        window.alert('Directions request failed due to ' + status);
+
+  route.onclick = ()=>{
+    const directionRequest = {
+      origin: {lat: firstMarker.position.lat(), lng: firstMarker.position.lng()},
+      destination: {lat: secondMarker.position.lat(), lng: secondMarker.position.lng()},
+      travelMode: mode.value
+    };
+    
+    directionsService.route(
+      directionRequest,
+      function(response, status) {
+        if (status === 'OK') {
+          directionsDisplay.setDirections(response);
+    
+        } else {
+          window.alert('Directions request failed due to ' + status);
+        }
       }
-    }
-  );
-  directionsDisplay.setMap(tranMap);
-}
+    );
+    directionsDisplay.setMap(tranMap);
+  }
