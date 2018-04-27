@@ -1,8 +1,27 @@
 <h2>Language Course</h2>
 
+<div class="row">
 {{#each showingVideo}}
+<div class="card mine" style="width: 18rem;">
+  <video width="300" height="200" controls class="card-img-top" alt="Card image cap">
+    <source src="{{this.mediaFile}}" type="video/mp4"></source>
+    </video>
+  <div class="card-body">
+    <br>
+    <h5 class="card-title">{{this.name}}</h5>
+    <p class="card-text"></p>
+    {{!-- <a href="#" class="btn btn-primary">Go somewhere</a> --}}
+  </div>
+</div>
+{{/each}}
+</div>
 
-  <video
+
+
+
+
+
+  {{!-- <video
     id="language"
     class="video-js"
     controls
@@ -21,7 +40,4 @@
     </a>
   </p>
 </video>
-
-{{/each}}
-
-
+<p></p> --}}
