@@ -53,16 +53,12 @@
     <div class="drop-login">
     {{#if theUser.isAdmin}}
     <div class="btn-group float-right drop-login-one">
-      <button type="button" class="btn btn-info">
+      <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         Admin
-      </button>
-      <button type="button" class="btn btn-info dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true"
-        aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
       </button>
       <div class="dropdown-menu">
         <a href="/admin/user-list" class="dropdown-item">User list</a>
-        <a href="/admin/country-list" class="dropdown-item">Country List</a>
+        <a href="/admin/country-list" class="dropdown-item">Country list</a>
       </div>
     </div>
     {{/if}}
