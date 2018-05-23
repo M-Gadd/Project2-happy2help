@@ -9,7 +9,7 @@ According to the city you choose you can find introductory language courses that
 There is also a Map to help navigating through a city based on various means of transportation. 
 
 
-Please Login using these credentials in order to Access the admin view
+Please Login using these credentials in order to Access the admin view: 
 
 Username: Admin
 Password: admin 
