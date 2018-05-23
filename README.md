@@ -1,8 +1,10 @@
 # Project2-happy2help
 
+## This project was originally created as an excersice for learning web development technologies.
+
 We understand that moving to a new city can be difficult being that an expat, a student, a tourist, but most importantly those who can't find any other form of help like Refugees, so we created this website to be a collaboration within commuinties based on recommendations from people in the commuinty. 
 
-If you live in a city and you know a good resturant or a good clinic which helps people, you can always suggest it, then will come to the us as admins and we decide if it should go live or be deleted. Potentially, it can be based on users' feedback on any given recommendation. 
+The user can suggest a good resturant or a clinic, which will be passed on the admins for approval. Potentially, it can be based on users' feedback on any given recommendation. 
 
 According to the city you choose you can find introductory language courses that can help with the basic concepts. 
 
