@@ -15,6 +15,6 @@ Username: Admin
 
 Password: admin
 
-Change Country: France  ==> in order to see a preview of the video functionality.  
+Change Country: France  // in order to see a preview of the video functionality.  
 
 
