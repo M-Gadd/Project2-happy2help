@@ -1,6 +1,6 @@
 # Project2-happy2help
 
-We understand that moving to a new city can be difficult and we created this website to be a collaboration within commuinties based on recommendations from people in the commuinty. 
+We understand that moving to a new city can be difficult being that an expat, a student, a tourist, but most importantly those who can't find any other form of help like Refugees, so we created this website to be a collaboration within commuinties based on recommendations from people in the commuinty. 
 
 If you live in a city and you know a good resturant or a good clinic which helps people, you can always suggest it, then will come to the us as admins and we decide if it should go live or be deleted. Potentially, it can be based on users' feedback on any given recommendation. 
 
