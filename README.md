@@ -11,10 +11,10 @@ There is also a Map to help navigating through a city based on various means of 
 
 Please Login using these credentials in order to Access the admin view: 
 
-Username: Admin,
+Username: Admin
 
-Password: admi,
+Password: admin
 
-Change Country: France => in order to see a preview of the video functionality.  
+Change Country: France  ==> in order to see a preview of the video functionality.  
 
 
